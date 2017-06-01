@@ -1,0 +1,17 @@
+/* HEADER */
+.header { background-color: #d6dada; height: 76px; }
+/*.header img.sri { height: 65px; width: 114px; margin-top: 5px;}*/
+.header img.sri { margin-left: -30px; height: 65px; width: 114px; margin-top: 5px;}
+.header img.logo { margin-left: 55px; margin-top: 12px; }
+/*.header img.logo { margin-top: 12px; }*/
+.header div.col-md-8 { padding: 23px; }
+/*.header .container .col-md-8 .marco { height: 50px; width: 3px; background-color: #E5E5E5; position: absolute; margin-top: -10px; } */
+.header span.h4 { font-family: 'Product Sans', Arial, sans-serif; color: #6b6a6a; font-size: 26px; padding-right: 30px; }
+.linea {  height: 20px; }
+.linea img { width: 90px; height: 90px;  margin-top: -50px; margin-right: 40px;}
+.clearfix { clear: both; }
+/* HEADER */
+
+/* GENERAL PARA TODO */
+.container p { font-family: 'Calibri'; font-size: 18px; }
+.container .texto { padding: 15px; color: #706F6F; text-align: justify; }

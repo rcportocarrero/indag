@@ -1,0 +1,97 @@
+<?php
+$base_url = $this->basePath();
+$config = $this->config;
+?>
+<div class="container-fluid">
+
+    <div class="row fondo"  style="min-height: 650px;">
+
+        <div class="col-lg-5" style="padding: 10px;">
+            <div class="col-lg-offset-6 col-lg-6" style="padding: 10px; background-color: white; ">
+                <ul class="nav nav-sidebar left_menu_recupera">
+                    <li id="menu_recuperar"  >¿Olvidó su contraseña?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-7  main" style="color:#777777; font-size: 13px; ">
+            <!--<div class=" col-lg-8" style="padding: 10px; background-color: #93C5CD; color: white; font-weight: bold;">-->
+            <div class="col-lg-8 titulo_principal" >
+                Restablecer contraseña
+            </div>
+            <div class=" col-lg-8" style="padding: 10px; background-color: white; ">
+                <?php if ($success) { ?>
+                    <form method="POST" action="<?php echo $this->url('usuario/sec', array('action' => 'cambiar')); ?>" id="frm_cambiar" class="form-horizontal" autocomplete="off" style="font-family: Tahoma;">
+                        <input type="hidden" id="tkn_va" name="tkn_va" value="<?php echo $token; ?>" />
+                        <input type="hidden" id="tkn_uid" name="tkn_uid" value="<?php echo $token_uid; ?>" />
+                        <div class="form-group">
+                            <label for="correo" class="col-lg-4 control-label" >Contraseña nueva:</label>
+                            <div class="col-lg-8">
+                                <input type="password" class="form-control" id="form_password" name="form_password" maxlength="<?php echo $caracteres['contrasenias']['max'] ;?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dni" class="col-xs-4 control-label">Confirme su contraseña nueva</label>
+                            <div class="col-lg-8">
+                                <input type="password" id="form_repeat_password" name="form_repeat_password" class="form-control" maxlength="<?php echo $caracteres['contrasenias']['max'] ;?>">
+                            </div>
+                        </div>
+
+                        <?php if ($caracteres['captcha']['enabled'] === true) { ?>
+                            <div class="form-group">
+                                <label class="col-lg-4 control-label" for="captch-image"></label>
+                                <div class="col-lg-8">
+                                    <div class="input-group" id="wrap-captch">
+                                        <img id="ref_cambiar" src="<?php echo $base_url ?>/usuario/captcha/clavecaptcha?rnd=<?php echo rand(); ?>" />
+                                        <a href="javascript:" class="" onclick="refresh_cambiar()" ><img src="<?php echo $base_url ?>/img/refresh.png" /></a>
+                                        &nbsp;&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-4 control-label" for="captch-image">Ingrese el c&oacute;digo de la imagen:</label>
+                                <div class="col-lg-4 col-md-7 col-sm-12 col-xs-12">
+                                    <input type="text" id="captcha_cambiar" name="captcha_cambiar" class="form-control" required="required" maxlength="<?php echo $caracteres['captcha']['tamano_codigo'] ;?>">
+                                </div>
+                            </div>
+
+                        <?php } ?>
+
+                        <div align="center">
+                            <button id="enviar_cambio" type="submit" class="btn boton">Guardar</button>
+                        </div>
+                        <br>
+                        <div class="form-group text-center text-primary">
+                            <p>
+                                <b><a href="<?php echo $this->url('usuario/sec', array('action' => 'index')); ?>">Atr&aacute;s</a></a>&nbsp;&nbsp;&nbsp;</b>
+                            </p>
+                        </div>
+
+                        <div class="form-group text-primary">
+                            <div class="col-lg-12 col-md-8 col-sm-12 col-xs-12">
+                                <h4><b>Importante:</b></h4>
+                                <p style="font-size:14px;">Para efectuar el cambio de su contraseña actual debes considerar las siguientes reglas:</p>
+                                <p class="p_opciones">- La contraseña nueva debe contener ​letras y números​.</p>
+                                <p class="p_opciones">- La longitud mínima debe ser de ​<?php echo json_encode($caracteres['contrasenias']['min']); ?> caracteres.</p>
+                                <p class="p_opciones">- La longitud máxima debe ser de ​<?php echo json_encode($caracteres['contrasenias']['max']); ?>​ caracteres.</p>
+                                <p class="p_opciones">- No debe ser igual a su número de documento de identidad.</p>
+                                <?php if (intval(json_encode($config['general']['ultimas_claves'])) === 1) { ?>
+                                <p class="p_opciones">- Esta debe ser diferente a la​ última contraseña ingresada anteriormente.</p>
+                                 <?php } else { ?>
+                                <p class="p_opciones">- Esta debe ser diferente a las ​<?php echo json_encode($config['general']['ultimas_claves']); ?>​ últimas contraseñas ingresadas anteriormente.</p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                    <?php } else { ?>
+                        <p class="text-center">
+                            Este enlace no es válido o ha expirado. Por favor, reinicie el flujo de recuperación de contraseña.
+                        </p>
+                    <?php } ?>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

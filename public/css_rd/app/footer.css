@@ -1,0 +1,7 @@
+/* FOOTER */
+.footer-bottom {
+	border-top: 1px solid #DDDDDD;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.footer-bottom p { color: #14A3BD; font-size: 15px; }

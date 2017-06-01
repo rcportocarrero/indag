@@ -1,0 +1,80 @@
+<?php
+//echo '<pre>';
+//print_r($data);
+//echo '</pre>';
+?>
+<form>
+    <?php
+    $grupo_pregunta = $data['instrumento']['listaGrupoPregunta'];
+    foreach ($grupo_pregunta as $grupo) {
+        //Entre a grupos de preguntas
+        ?>
+        <div class="row" style="padding: 20px;">
+            <div class="tab-pane fade active in" id="responsable">
+                <div class="tab-titulo"><?php echo $grupo['nombre'] ?></div>
+                <?php
+                foreach ($grupo['listaPreguntas'] as $preguntas) {
+                    //Entre a preguntas
+                    ?>
+                <div class="form-group" style="padding-top:10px; padding-bottom: 30px;">
+                        <div class="col-md-9">
+                            <label for="preg_<?php echo $preguntas['id_pregunta']; ?>"><?php echo $preguntas['id_pregunta'] . '.- ' . $preguntas['nombre']; ?></label>
+                        </div>
+                        <div class="col-md-3" style="text-align: center;">
+                            <?php
+                            switch (intval($preguntas['tipoPregunta']['id_tipo_pregunta'])) {
+                                case 1:
+                                    //1, Unica seleccion (Radiobuttons)
+                                    echo '<div class="btn-group" data-toggle="buttons">';
+                                    foreach ($preguntas['listaPreguntaOpcion'] as $opciones) {
+                                        echo ' <label class="btn btn-primary"><input type="radio" name="opt' . $preguntas['id_pregunta'] . '" id="opt_' . $preguntas['id_pregunta'] . '_' . $opciones['id_pregunta_opcion'] . '"  value="' . $opciones['id_pregunta_opcion'] . '" autocomplete="off">' . $opciones['nombre'] . '</label>';
+                                    }
+                                    echo '</div>';
+                                    break;
+                                case 2:
+                                    //2, Multiple seleccion (Checkbox)
+                                    foreach ($preguntas['listaPreguntaOpcion'] as $opciones) {
+                                        echo '<div class="checkbox">
+                                            <label><input type="checkbox" id="opt_' . $preguntas['id_pregunta'] . '_' . $opciones['id_pregunta_opcion'] . '" value="' . $opciones['id_pregunta_opcion'] . '">' . $opciones['nombre'] . '</label>
+                                          </div>';
+                                    }
+                                    break;
+                                case 3:
+                                    //3, Combo lista (ComboList)
+                                    echo '<select name="slct_' . $preguntas['id_pregunta'] . '" id="slct_' . $preguntas['id_pregunta'] . '" class="form-control" style="margin-left: 15px;">';
+                                    foreach ($preguntas['listaPreguntaOpcion'] as $opciones) {
+                                        echo '<option value="' . $opciones['id_pregunta_opcion'] . '">' . $opciones['nombre'] . '</option>';
+                                    }
+                                    echo '</select>';
+                                    break;
+                                case 4:
+                                    //4, Texto corto (texto hasta 100 caracteres)
+                                    echo '<input type="text" name="inpt_' . $preguntas['id_pregunta'] . '" class="form-control" id="inpt_' . $preguntas['id_pregunta'] . '" maxlenght="100">';
+                                    break;
+                                case 5:
+                                    //5, Texto extenso (texto multiple linea hasta 300 lineas)
+                                    echo '<textarea class="form-control" name="inpt_mult' . $preguntas['id_pregunta'] . '" id="inpt_mult_' . $preguntas['id_pregunta'] . '" rows="3" maxlenght="300"></textarea>';
+                                    break;
+                                case 6:
+                                    //6, Escala lineal (es de calificacion ejmp de 0 a 5 calificacion de atencion )
+
+                                    echo 'Por definir.';
+
+                                    break;
+                                case 7:
+                                    //7, Fecha ( para ingresar fecha)
+                                    echo '<input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">';
+                                    break;
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+        </div>
+        <?php
+    }
+    ?>
+</form>

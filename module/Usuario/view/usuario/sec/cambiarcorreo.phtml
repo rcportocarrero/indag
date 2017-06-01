@@ -1,0 +1,68 @@
+<?php
+$base_url = $this->basePath();
+?>
+<style>
+    .error {
+        border-color: red;
+        color: red;
+        font-family: tahoma;
+        font-size: 12px;
+    }
+    .lbl_color{
+        color:#777777;
+        font-weight: bold;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row banner_2_login" style="color: #777777;">
+
+    </div>
+
+    <div class="row fondo"  style="min-height: 650px;">
+
+        <div class="col-lg-5" style="padding: 10px;">
+            <div class="col-lg-offset-6 col-lg-6" style="padding: 10px; background-color: white; ">
+                <ul class="nav nav-sidebar left_menu_recupera">
+                    <li id="menu_recuperar"  >Cambiar correo electrónico</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-7  main" style="color:#777777; font-size: 16px;">
+            <div class="col-lg-8 titulo_principal" >
+                Confirmación de cambio de correo electrónico
+            </div>
+            <div class=" col-lg-8" style="padding: 10px; background-color: white; ">
+                <?php if ($success) { ?>
+                    <p class="text-center">
+                        <?php echo $msg; ?>
+                    </p>
+                <?php } else { ?>
+                    <p class="text-center">
+                        Este enlace no es válido o ha expirado. Por favor, reinicie el flujo de cambio de correo electrónico.
+                    </p>
+                <?php } ?>
+                <p class="text-center">
+                    <a href="<?php echo $this->url('usuario/sec', array('action' => 'index')); ?>" ><b>Atr&aacute;s</b></a>&nbsp;&nbsp;&nbsp;
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer footer_color">
+        <div class="container">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                <p class="text-muted footer_color">
+                    Línea de atención al postulante<br />
+                    (01) 615-5887<br>
+                </p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                <p class="text-muted footer_color">
+                    <?php echo date('Y'); ?> &copy; Todos los derechos reservados
+                </p>
+            </div>
+        </div>
+    </footer>
+</div>

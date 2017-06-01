@@ -1,0 +1,26 @@
+$(document).ready(function(){
+	$('#btnclasificador').click(function(){
+        $('.carrera-one').fadeOut();
+        $('.carrera-two').fadeIn();
+    });
+    $('#btnadjuntar').click(function(){
+        $('.carrera-one').fadeOut();
+        $('.carrera-three').fadeIn();
+    });
+    $('#btnatras').click(function(){
+       $('.carrera-two').fadeOut();
+       $('.carrera-one').fadeIn();
+    });
+    $('#btnatras2').click(function(){
+        $('.carrera-three').fadeOut(); 
+        $('.carrera-one').fadeIn();
+    });
+    $('#btnatras3').click(function(){
+        $('.carrera-four').fadeOut(); 
+        $('.carrera-two').fadeIn();
+    });
+    $(".lnkcarrera").click(function() {
+        $('.carrera-two').fadeOut(); 
+        $('.carrera-four').fadeIn();
+    }); 
+});

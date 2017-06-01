@@ -1,0 +1,13 @@
+/* ---------- BARRA DE NAVEGACION ---------- */
+.navbar-default { background-color: red; }
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {background-color: rgba(255, 255, 255, 1); border-radius: 3px; color: #2C93FF; opacity: 1; }
+
+/* ----------- FORMULARIO ---------- */
+
+/* -> Botonera */
+.formu .nav-tabs > li.active > a, .formu .nav-tabs > li.active > a:focus, .formu .nav-tabs > li.active > a:hover { border-width: 0; }
+.formu .nav-stacked > li + li { margin-top: 0px; }
+.formu .nav-tabs > li { border-bottom: 2px solid #F0F0F0; }
+.formu .nav-tabs > li > a { color: #F0F0F0; background-color: #5BC0DE; border: 0px; border-radius: 0px; margin: 0; font-size: 20px; }
+.formu .nav-tabs > li > a:hover, .formu .nav-tabs > li > a:active, .formu .nav-tabs > li > a:focus { color: #F0F0F0; background-color: #14A3BD; }
+.formu .nav-tabs > li.active > a { color: #F0F0F0; background-color: #14A3BD; }

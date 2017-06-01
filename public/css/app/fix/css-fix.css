@@ -1,0 +1,23 @@
+/*
+.container
+{
+    display:table;
+    width: 100%;
+    border: 1px solid red;
+}
+.row
+{
+    height: 100%;
+    display: table-row;
+}
+.col-md-12
+{
+   	width: 100%;
+    display: table-cell;
+}
+.col-ms-6
+{
+	width: 50%;
+	display: table-cell;
+}
+*/

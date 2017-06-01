@@ -1,0 +1,26 @@
+$(document).ready(function(){
+	$('#btndocentes').click(function(){
+        $('.institucion-one').fadeOut();
+        $('.institucion-two').fadeIn();
+    });
+    $('#btnatras').click(function(){
+       $('.institucion-two').fadeOut();
+       $('.institucion-one').fadeIn();
+    });
+    $('#btnadjuntar').click(function(){
+       $('.carrera-one').fadeOut();
+       $('.carrera-two').fadeIn();
+    });
+    $('#btnatras2').click(function(){
+       $('.carrera-two').fadeOut();
+       $('.carrera-one').fadeIn();
+    });
+    $('#btnatras3').click(function(){
+       $('.carrera-three').fadeOut();
+       $('.carrera-one').fadeIn();
+    });
+    $('.icon-editar').click(function(){
+       $('.carrera-one').fadeOut();
+       $('.carrera-three').fadeIn();
+    });
+});

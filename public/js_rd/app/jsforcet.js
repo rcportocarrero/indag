@@ -1,0 +1,19 @@
+$(document).ready(function(){
+	$('#nvaespecialidad').click(function(event){
+        event.preventDefault();
+        $('.especialidad-one').fadeOut();
+        $('.especialidad-two').fadeIn();
+    });
+    $('#icon-adjuntar-archivo').click(function(){
+        $('.especialidad-one').fadeOut();
+        $('.especialidad-three').fadeIn();
+    });
+	$('#btnatras').click(function(){
+       $('.especialidad-two').fadeOut();
+       $('.especialidad-one').fadeIn();
+    });
+    $('#btnatras2').click(function(){
+       $('.especialidad-three').fadeOut();
+       $('.especialidad-one').fadeIn();
+    });
+});

@@ -1,0 +1,17 @@
+/* FOOTER PAGINA INICIO */
+
+.footer { position: relative; background-color: #d6dada; clear: both; margin-top: -70px; }
+.footer .container { padding-bottom: 5px; }
+.footer .container h3 { color: #15a4bd; font-size: 20px; }
+.correo { position: absolute; margin-top: 10px; }
+.footer .container .canales h3, footer .container .telefono h3 { font-size: 21px; }
+.footer .container .canales h3 { padding-top: 10px;  }
+.footer .container .telefono h3 .num-fono { margin: 10px 0px 0px 10px; position: absolute;}
+.footer .container .redes, .footer .container .correobox { padding-top: 15px; }
+.footer .container #icon-facebook { margin-right: 15px; /*color: #3B5998;*/ }
+.footer .container #icon-twitter img, .footer .container #icon-facebook img { width: 40px; height: 40px; }
+.footer .fa { font-size: 40px; }
+.footer .fa-envelope { color: #EAC116;  }
+.footer .fa-phone-square { color: #87C71F; }
+.footer .container .correobox .correo { color: #15a4bd; }
+/* FOOTER PAGINA INICIO */
