@@ -217,6 +217,7 @@ function cargar_table_instrumentos()
 ;
 function cargar_table_detail_instrumentos()
 {
+    var lastSel;
     jQuery("#grid_instrumentos_detail").jqGrid({
         data: [],
         datatype: "local",
@@ -225,9 +226,9 @@ function cargar_table_detail_instrumentos()
         colNames: ['Id', 'Id instrumento empleado', 'Instituación educativa', 'Informantes (Nombres y apellidos)', 'Estado', 'Acciones'],
         colModel: [
             {name: 'a', index: 'a', width: 10, align: "left", sortable: true, hidden: true, key: true},
-            {name: 'id_instrumento', index: 'id_instrumento', width: 10, align: "left", sortable: true, hidden: true},            
-            {name: 'institucion_educativa', index: 'institucion_educativa', width: 250, align: "left", sortable: true},
-            {name: 'informante', index: 'informante', width: 250, sortable: true},
+            {name: 'id_instrumento', index: 'id_instrumento', width: 10, align: "left", sortable: true, hidden: true},
+            {name: 'institucion_educativa', index: 'institucion_educativa', width: 250, align: "left", sortable: false},
+            {name: 'informante', index: 'informante', width: 250, sortable: false},
             {name: 'estado', index: 'estado', width: 90, align: "center", formatter: estadoINSDetail, sortable: false},
             {name: 'id_instrumento_empleado', index: 'id_instrumento_empleado', width: 100, formatter: agregarIE, align: "center", sortable: false},
         ],
@@ -239,10 +240,13 @@ function cargar_table_detail_instrumentos()
         sortname: 'a',
         viewrecords: true,
         resizable: true,
-        multipleSearch: true,
-        ondblClickRow: function (rowid)
+        ondblClickRow: function (id)
         {
-            modal_lista_preg(rowid);
+            if (id && id !== lastSel) {
+                jQuery(this).restoreRow(lastSel);
+                lastSel = id;
+            }
+            modal_lista_preg(lastSel);
         }
     });
 }
@@ -258,29 +262,35 @@ function estadoINSDetail(cellvalue, options, rowObject) {
     return "<span class='label label-warning'>" + cellvalue + "</span>";
 }
 
+
+
 function modal_lista_preg(id_emp) {
-    
-    
     jQuery('#content_out').html('');
-    jQuery('#modal_preguntas_tmp').modal('show');
-    
+//    jQuery('#modal_preguntas_tmp').modal('show');
+
+    jQuery('#modal_preguntas_tmp').modal({
+        keyboard: false,
+        backdrop: 'static'
+    });
+
     var modal_preguntas = jQuery('#modal_preguntas_tmp');
     modal_preguntas.on('shown.bs.modal', function (e) {
+        jQuery(this).off('shown.bs.modal');
+//        jQuery('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'});
 
-//        jQuery(".next-step").click(function (e) {
-//            var $active = jQuery('.nav-tabs .nav-henker li.active');
-//            $active.next().removeClass('disabled');
-//            nextTab($active);
-//        });
-//        jQuery(".prev-step").click(function (e) {
-//            var $active = jQuery('.nav-tabs .nav-henker li.active');
-//            prevTab($active);
-//        });
-        console.log(id_emp);
-        var data = preguntas_listar({id_instrumento_emp:id_emp});
+        var data = preguntas_listar({id_instrumento_emp: id_emp});
         var source = jQuery("#tpl_listado_formato_content").html();
         var template = Handlebars.compile(source);
         jQuery('#content_out').html(template(data));
+
+    });
+
+    modal_preguntas.on('loaded.bs.modal', function (e) {
+        jQuery("#example-embed").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "fade"
+        });
     });
 }
 function nextTab(elem) {
@@ -289,7 +299,12 @@ function nextTab(elem) {
 function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
 }
-
+function refresh_login()
+{
+    if (jQuery('#ref_login').val() !== undefined) {
+        document.getElementById('ref_login').src        = root + "/usuario/captcha/logincaptcha?rnd=" + Math.random();
+    }
+}
 
 (function () {
     function checkCondition(v1, operator, v2) {

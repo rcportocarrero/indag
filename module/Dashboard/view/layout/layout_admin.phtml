@@ -45,6 +45,8 @@ $cambio_config = $this->cambio_config;
                 ->prependFile($this->basePath('js_rd/bootstrap/bootbox/440/bootbox.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
                 ->prependFile($this->basePath('js_rd/app/jsforallpages.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
                 ->prependFile($this->basePath('js/lib/jqgrid/i18n/grid.locale-es.js'))
+//                ->prependFile($this->basePath('js/app/jquery.bootstrap.wizard.js'))
+                ->prependFile($this->basePath('js/app/jquery.steps.min.js'))
                 ->prependFile($this->basePath('js/lib/jqgrid/jquery.jqGrid.min.js'))
                 ->prependFile($this->basePath('js/lib/BaseXJS/jquery.filter_input.js'))
                 ->prependFile($this->basePath('js/lib/BaseXJS/jquery.commons.js'))

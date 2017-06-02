@@ -1,70 +1,136 @@
-<script id="tpl_listado_formato_content" type="text/x-handlebars-template">      
+<script id="tpl_listado_formato_content" type="text/x-handlebars-template"> 
+    <div class="row">
+        <div class="col col-sm-12">
+            {{#instrumento.p}}
+                        {{#f}}
+                            <div class="form-group padd_input">
+                                <div class="col-md-9">
+                                    <label for="preg_{{a}}">{{b}}</label>
+                                </div>
+                                <div class="col-md-3" style="text-align: left;">
+                                    {{#ifCond g.a "=="  'Vg' }}
+                                        <div class="btn-group" data-toggle="buttons">
+                                        {{#h}}
+                                            <label class="btn btn-primary"><input type="radio" name="opt_{{a}}" id="opt_{{c}}_{{a}}"  value="{{a}}" autocomplete="off">{{b}}</label>
+                                        {{/h}}
+                                        </div>                                    
+                                    {{/ifCond}}
+                                    {{#ifCond g.a "=="  'qR' }}
+                                        {{#h}}
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="opt_{{c}}_{{a}}" value="{{a}}">{{b}}</label>
+                                        </div>
+                                        {{/h}}
+                                    {{/ifCond}}
+                                    {{#ifCond g.a "=="  'am' }}
+                                        <select name="slct_{{a}}" id="slct_{{a}}" class="form-control" style="margin-left: 15px;">
+                                        {{#h}}
+                                            <option value="{{a}}">{{b}}</option>
+                                        {{/h}}
+                                        </select>                                              
+                                    {{/ifCond}}
+                                    {{#ifCond g.a "=="  '75' }}
+                                        <input type="text" name="inpt_{{a}}" class="form-control" id="inpt_{{a}}" maxlenght="100">
+                                    {{/ifCond}}
+                                    {{#ifCond g.a "=="  'mR' }}
+                                        <textarea class="form-control" name="inpt_mult_{{a}}" id="inpt_mult_{{a}}" rows="3" maxlenght="300"></textarea>
+                                    {{/ifCond}}
+                                    {{#ifCond g.a "=="  'p4' }}
+                                        <select name="slct_{{a}}" id="slct_{{a}}" class="form-control" style="width:90px">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        
+                                        </select> 
+                                    {{/ifCond}}
+                                    {{#ifCond g.a "=="  'Rw' }}
+                                        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                    {{/ifCond}}
+                                </div>
+                            </div>
+                        {{/f}}
+                    {{/instrumento.p}} 
+                </div>
+            </div>    
+</script>
+
+
+<!--<div id="rootwizard">
+    
     <div class="row">
         <div class="col col-sm-4" >
-            <ul class="nav nav-tabs nav-henker nav-stacked text-center" role="tablist">
-            {{#instrumento.p}}
-                <li role="presentation" {{#ifCond a "=="  'Vg' }} class="active" {{/ifCond}}  ><a href="#" role="tab" data-toggle="tab" style="font-size:12px; text-align:left;"  id="paso_{{a}}">{{b}}</a></li>
-                {{/instrumento.p}} 
-                <li role="presentation"><a href="#" role="tab" data-toggle="tab" style="font-size:12px; text-align:left;" id="paso_resumen">RESUMEN</a></li>
-            </ul>
+            <div class="navbar">
+                <div class="navbar-inner">
+                        <div class="container">
+                            <ul>
+                            {{#instrumento.p}}
+                                <li {{#ifCond a "=="  'Vg' }} class="active" {{/ifCond}}  ><a href="#paso_{{a}}" role="tab" data-toggle="tab" style="font-size:12px; text-align:left;"  id="paso_{{a}}">{{b}}</a></li>
+                                {{/instrumento.p}} 
+                                <li><a href="#" role="tab" data-toggle="tab" style="font-size:12px; text-align:left;" id="paso_resumen">RESUMEN</a></li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
         </div>
     
         <div class="col col-sm-8">
-            <div class="row tab-content">
-                {{#instrumento.p}}
-                <div role="tabpanel" class="tab-pane {{#ifCond a "=="  'Vg' }} active in {{/ifCond}} fade" id="paso_{{a}}">
-                    {{#f}}
-                    <div class="form-group" class="padd_input">
-                    <div class="col-md-9">
-                    <label for="preg_{{a}}">{{d}}.-{{b}}</label>
-                    </div>
-                    <div class="col-md-3" style="text-align: center;">
-                    {{#ifCond g.a "=="  'Vg' }}
-                        <div class="btn-group" data-toggle="buttons">
-                        {{#h}}
-                            <label class="btn btn-primary"><input type="radio" name="opt_{{a}}" id="opt_{{c}}_{{a}}"  value="{{a}}" autocomplete="off">{{b}}</label>
-                        {{/h}}
-                        </div>                                    
-                    {{/ifCond}}
-                    {{#ifCond g.a "=="  'qR' }}
-                        {{#h}}
-                        <div class="checkbox">
-                            <label><input type="checkbox" id="opt_{{c}}_{{a}}" value="{{a}}">{{b}}</label>
+                <div class="tab-content">
+                    {{#instrumento.p}}
+                    <div class="tab-pane {{#ifCond a "=="  'Vg' }} active in {{/ifCond}} fade" id="paso_{{a}}">
+                        {{#f}}
+                        <div class="form-group" class="padd_input">
+                        <div class="col-md-9">
+                        <label for="preg_{{a}}">{{d}}.-{{b}}</label>
                         </div>
-                        {{/h}}
-                    {{/ifCond}}
-                    {{#ifCond g.a "=="  'am' }}
-                        <select name="slct_{{a}}" id="slct_{{a}}" class="form-control" style="margin-left: 15px;">
-                        {{#h}}
-                            <option value="{{a}}">{{b}}</option>
-                        {{/h}}
-                        </select>                                              
-                    {{/ifCond}}
-                    {{#ifCond g.a "=="  '75' }}
-                        <input type="text" name="inpt_{{a}}" class="form-control" id="inpt_{{a}}" maxlenght="100">
-                    {{/ifCond}}
-                    {{#ifCond g.a "=="  'mR' }}
-                        <textarea class="form-control" name="inpt_mult_{{a}}" id="inpt_mult_{{a}}" rows="3" maxlenght="300"></textarea>
-                    {{/ifCond}}
-                    {{#ifCond g.a "=="  'p4' }}
-                        {{tipoPregunta.nombre}}
-                    {{/ifCond}}
-                    {{#ifCond g.a "=="  'Rw' }}
-                        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-                    {{/ifCond}}
-                    </div>
-                    </div>
-                    {{/f}}
-                </div> 
-                {{/instrumento.p}} 
+                        <div class="col-md-3" style="text-align: center;">
+                        {{#ifCond g.a "=="  'Vg' }}
+                            <div class="btn-group" data-toggle="buttons">
+                            {{#h}}
+                                <label class="btn btn-primary"><input type="radio" name="opt_{{a}}" id="opt_{{c}}_{{a}}"  value="{{a}}" autocomplete="off">{{b}}</label>
+                            {{/h}}
+                            </div>                                    
+                        {{/ifCond}}
+                        {{#ifCond g.a "=="  'qR' }}
+                            {{#h}}
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="opt_{{c}}_{{a}}" value="{{a}}">{{b}}</label>
+                            </div>
+                            {{/h}}
+                        {{/ifCond}}
+                        {{#ifCond g.a "=="  'am' }}
+                            <select name="slct_{{a}}" id="slct_{{a}}" class="form-control" style="margin-left: 15px;">
+                            {{#h}}
+                                <option value="{{a}}">{{b}}</option>
+                            {{/h}}
+                            </select>                                              
+                        {{/ifCond}}
+                        {{#ifCond g.a "=="  '75' }}
+                            <input type="text" name="inpt_{{a}}" class="form-control" id="inpt_{{a}}" maxlenght="100">
+                        {{/ifCond}}
+                        {{#ifCond g.a "=="  'mR' }}
+                            <textarea class="form-control" name="inpt_mult_{{a}}" id="inpt_mult_{{a}}" rows="3" maxlenght="300"></textarea>
+                        {{/ifCond}}
+                        {{#ifCond g.a "=="  'p4' }}
+                            {{tipoPregunta.nombre}}
+                        {{/ifCond}}
+                        {{#ifCond g.a "=="  'Rw' }}
+                            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                        {{/ifCond}}
+                        </div>
+                        </div>
+                        {{/f}}
+                    </div> 
+                    {{/instrumento.p}} 
+                </div>
             </div>
         </div>
-    </div>
     
-    <div class="row">
-        <ul class="list-inline pull-right">
-            <li><button type="button" class="btn btn-default prev-step">Previo</button></li>
-            <li><button type="button" class="btn btn-default next-step">Siguiente</button></li>
-        </ul>                
-    </div>
-</script>
+        <div class="row">
+            <ul class="list-inline pull-right">
+                <li><button type="button" class="btn btn-default prev-step">Previo</button></li>
+                <li><button type="button" class="btn btn-default next-step">Siguiente</button></li>
+            </ul>                
+        </div>
+    </div>-->

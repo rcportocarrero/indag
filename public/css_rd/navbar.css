@@ -8,6 +8,6 @@
 .formu .nav-tabs > li.active > a, .formu .nav-tabs > li.active > a:focus, .formu .nav-tabs > li.active > a:hover { border: 2px solid #4DC1E0; border-width: 0; background-color: #14A3BD; color: #FFF}
 .formu .nav-stacked > li + li { margin-top: 0px; }
 .formu .nav-tabs > li { border-bottom: 2px solid #F0F0F0; padding-top: 8px;}
-.formu .nav-tabs > li > a { color: #4DC1E0; background-color: #FFF; border: 2px solid; border-radius: 0px; margin: 0; font-size: 20px; }
+.formu .nav-tabs > li > a { color: #4DC1E0; background-color: #FFF; border: 2px solid; border-radius: 0px; margin: 0; font-size: 16px; }
 .formu .nav-tabs > li > a:hover, .formu .nav-tabs > li > a:active, .formu .nav-tabs > li > a:focus { color: #F0F0F0; background-color: #14A3BD; }
 .formu .nav-tabs > li.active > a { color: #00A7D3; background-color: #CDEDF6;     border: 2px solid #4DC1E0; }

@@ -60,7 +60,14 @@ form label { color: #706F6F; font-size: 15px; }
 .botones { padding-right: 40px; }
 .anexo { font-weight: bold; color: #706F6F; padding: 5px 10px 0px 0px;}
 /*.tab-pane  h3 { color: #FFF; background-color: #14A3BD; text-align: center; padding: 7px; }*/
-.tab-pane .tab-titulo { color: #FFF; background-color: #14A3BD; text-align: center; padding: 7px; color: #FFF; font-size: 23px;}
+/*.tab-pane .tab-titulo { color: #FFF; background-color: #14A3BD; text-align: center; padding: 7px; color: #FFF; font-size: 23px;}*/
+.tab-pane .tab-titulo {
+    text-align: center;
+    padding: 7px;
+    color: #0096BE;
+    font-size: 23px;
+    border-bottom: 2px solid #7FD3E9;
+}
 .tab-content { margin-top: 30px; background-color: #EDEDED; padding-bottom: 0px; }
 .info { background-color: #8B8C8C; color: #FFF; }
 .icon-download {  width: 35px; height: 35px; background-color: #74B7B2; color: #FFF; border-radius: 30px; padding: 10px 0 0 9px;}
@@ -138,8 +145,8 @@ table.tabla{ font-size: 14px; border-collapse:separate; border-spacing: 0px; }
 .margin-fix { margin-left: 15px }
 
 /* POPUP CAMBIAR CONTRASEÑA */
-.modal .modal-dialog .modal-content .modal-header .modal-title {  color: #FFF; }
-.modal .modal-dialog .modal-content .modal-header { background-color: #14A3BD;  }
+.modal .modal-dialog .modal-content .modal-header .modal-title {  color: #00A7D3; }
+.modal .modal-dialog .modal-content .modal-header { background-color: #e5e5e5;  }
 .modal .modal-dialog .modal-content .modal-header img.sri { width: 70px; height: 40px; } 
 .modal .modal-dialog .modal-content .modal-header .ptitulo h4 { font-size: 13px; font-weight: bold; }
 .modal .modal-dialog .modal-content .modal-header img.logo { width: 176px; height: 40px; }
@@ -295,3 +302,5 @@ table.tabla{ font-size: 14px; border-collapse:separate; border-spacing: 0px; }
 	.cinfo { font-size: 11px; }
 	.ccorreo { margin-left: -4px; }
 }
+
+ 
