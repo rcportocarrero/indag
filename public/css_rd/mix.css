@@ -1,0 +1,28 @@
+    .ui-jqgrid .ui-jqgrid-btable tbody tr.jqgrow td {
+        white-space: normal !important;
+        padding: 10px;
+    }
+
+    .ui-jqgrid .ui-jqgrid-htable .ui-th-div {
+        height: 40px !important;
+        padding: 10px;
+        display: list-item;
+        background-color: #69C7C1;
+    }
+    .ui-state-hover {
+        border : 1px solid #CAE7EA;
+        background: #CAE7EA;
+    }
+
+    .ui-th-ltr, .ui-jqgrid .ui-jqgrid-htable th.ui-th-ltr {
+        background-color: #CAE7EA;
+    }
+    .ui-state-highlight {
+        background: #CAE7EA;
+    }
+    .padd_input{
+        padding-top:10px; 
+        padding-bottom: 30px;
+        height: 50px;
+    }
+    

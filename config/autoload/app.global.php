@@ -2,7 +2,7 @@
 
 return [
     'app' => [
-        'app_title' => 'Intranet del postulante',
+        'app_title' => 'Indago',
         'name_concurso' => 'Concurso de Prueba 12345',
         'name_app' => 'Selección de plazas de IIEE',
         'titulo_norma_acta' => 'Concursos Públicos de Ingreso a la Carrera Pública Magisterial y de Contratación Docente en Instituciones Educativas Públicas de Educación Básica - 2017',

@@ -16,124 +16,135 @@ $cambio_config = $this->cambio_config;
         <?php
         echo $this->headMeta()
                 ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
-        ?>  
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
 
-        <?php
         echo $this->headLink()
+                ->prependStylesheet($this->basePath('css/style.css'))
                 ->prependStylesheet($this->basePath('js/lib/jqgrid/css/ui.jqgrid-bootstrap.css'))
-                ->prependStylesheet($this->basePath('css_rd/bootstrap/320/bootstrap.min.css'))
-                ->prependStylesheet($this->basePath('css_rd/font-awesome/css/font-awesome.css'))
-                ->prependStylesheet($this->basePath('css_rd/app/header.css'))
-                ->prependStylesheet($this->basePath('css_rd/app/body.css'))
-                ->prependStylesheet($this->basePath('css_rd/app/footer.css'))
-                ->prependStylesheet($this->basePath('css_rd/navbar.css'));
-                
-        ?>
-        <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
+//                ->prependStylesheet($this->basePath('css_rd/font-awesome/css/font-awesome.css'))
+                ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+                ->prependStylesheet($this->basePath('css/bootstrap-datepicker.css'))
+                ->prependStylesheet($this->basePath('css_rd/navbar.css'))
+                ->prependStylesheet($this->basePath('css_rd/mix.css'));
+        ?>   
+
         <script type="text/javascript">
             var root = '<?php echo $base_url; ?>';
         </script>
-
+        <!-- Scripts -->
         <?php
         echo $this->headScript()
-//                ->prependFile($this->basePath('js_rd/jquery/183/jquery.min.js?v=' . md5(time())))
-                ->prependFile($this->basePath('js_rd/bootstrap/320/bootstrap.min.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js/app/menu_datos_usuario.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js/app/menu_presentacion.js?v=' . md5(time())))
                 ->prependFile($this->basePath('js/app/menu.js?v=' . md5(time())))
                 ->prependFile($this->basePath('js/app/app.js?v=' . md5(time())))
-                ->prependFile($this->basePath('js_rd/ui/1112/jquery-ui.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-                ->prependFile($this->basePath('js_rd/bootstrap/bootbox/440/bootbox.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-                ->prependFile($this->basePath('js_rd/app/jsforallpages.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('js/lib/moment.js'))
+                ->prependFile($this->basePath('js/lib/safify.js'))
                 ->prependFile($this->basePath('js/lib/jqgrid/i18n/grid.locale-es.js'))
-//                ->prependFile($this->basePath('js/app/jquery.bootstrap.wizard.js'))
-                ->prependFile($this->basePath('js/app/jquery.steps.min.js'))
                 ->prependFile($this->basePath('js/lib/jqgrid/jquery.jqGrid.min.js'))
+                ->prependFile($this->basePath('js/lib/bootbox.min.js'))
+                ->prependFile($this->basePath('js/lib/kakashi.js'))
+                ->prependFile($this->basePath('js/lib/naruto.js'))
+                ->prependFile($this->basePath('js/lib/porigon.js'))
                 ->prependFile($this->basePath('js/lib/BaseXJS/jquery.filter_input.js'))
                 ->prependFile($this->basePath('js/lib/BaseXJS/jquery.commons.js'))
                 ->prependFile($this->basePath('js/app/_strings.js'))
                 ->prependFile($this->basePath('js/lib/handlebars-v4.0.5.js'))
-                ->prependFile($this->basePath('js/lib/BaseXJS/BaseX.js')) 
+                ->prependFile($this->basePath('js/lib/BaseXJS/BaseX.js'))
+                ->prependFile($this->basePath('js/bootstrap.min.js'))
                 ->prependFile($this->basePath('js/jquery.min.js'))
-                ->prependFile($this->basePath('js_rd/app/jsforinst.js'), 'text/javascript', array('conditional' => 'lt IE 9',));
+                ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
         ?>
-        <!--[if lte IE 9]>
-            <script src="js_rd/fix/html5shiv/html5shiv.js"></script>
-            <script src="js_rd/fix/respond/respond.js"></script>
-            <link href="css_rd/app/fix/css-fix.css" rel="stylesheet">
-        <![endif]-->
-
     </head>
-    <!-- HEADER -->
-    <div class="header">
-        <div class="container">
-            <div class="col-md-12 col-md-offset-0">
-                <div class="col-xs-2 col-sm-2 col-md-1">
-                    <img src="<?php echo $base_url; ?>/img/indago.png" class="sri" width="260px">
+    <body class="body_bg">
+        <div class="row row-fluid">
+            <div class="col-md-12 banner_top_titulo">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <a target="_blank" href="#" class="text-center">
+                        <img class="img-responsive center-block" src="<?php echo $base_url; ?>/img/indago.png" width="260px"/>
+                    </a>  
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-8">
-                    <span class="h4"></span>
-                </div>
-                <div class="col-xs-2 col-sm-2 col-md-2">
-                    <img src="<?php echo $base_url; ?>/img/logo.png" class="logo">
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>    
-    </div>
-    <!-- HEADER -->
-
-    <!-- CUERPO -->
-    <div class="container">
-        <div class="row">
-            <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
-            <div class="col-md-12 col-md-offset-0">
-                <!-- LINKS -->
-                <div style="text-align: right; padding: 15px;">
-                            <div class="link-boton2">
-                                <a href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">
-                                    <img src="<?php echo $base_url; ?>/img/logout.png" alt="" width="140" height="36" class="logout">
-                                </a>
-                            </div>
-                </div>
-                <!-- LINKS -->
-
-                <!-- CAJA CELESTE -->
-                <div class="caja1">
-                    <div class="row">
-                        <div class="first-line col-md-12">
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <p class="centrado"><b>Bienvenido: <?php echo $usuario->display_name; ?></b></p>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <p class="centrado"><b>Rol: Analista</b></p>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3 pull-right">
-                                <p class="centrado"><b>Última Sesión:</b> 12/07/2016 15:26:22</p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <!-- CAJA CELESTE -->
-
-                <div class="formu">
-                    <?php echo $this->content; ?>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <a target="_blank" href="http://www.minedu.gob.pe/" class="text-center">
+                        <img class="img-responsive center-block" src="<?php echo $base_url; ?>/img/logo_ministerio_educacion.gif"/>
+                    </a>
                 </div>
             </div>
         </div>
-        <br>
-        <div class="row">
-            <div class="footer-bottom">
-                <div class="container">
-                    <!--<p class="pull-left"> Copyright © Bloom. All right reserved. </p>-->
-                    <p class="text-center">
-                        <span>© Derechos Reservados <?php echo date('Y'); ?> - MINEDU</span>
+        <div class="row dashboard_barra_top" style="font-family: Tahoma;font-size: 16px;font-weight: bold;">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center" id="tbi_name_display">
+                Usuario(a): <?php echo $usuario->display_name; ?>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12  text-center">
+                <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12  text-center" >            
+                Último acceso: <?php echo $usuario->fec_ultimo_acceso; ?>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 text-center">
+                <button type="button" class="btn btn_primary_in btn-md" id="btn_change_password">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                </button>
+                <a id="btn_cerrar_sesion" href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>"><img src="<?php echo $base_url; ?>/img/logout.png" alt="" width="140" height="36" class="logout"></a>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <?php echo $this->content; ?>
+        </div>
+        <div class="modal fade" id="modal_chg_password" aria-hidden="true" >
+            <div class="modal-dialog">
+                <div id="passwordreset" style="margin-top:50px;width: 600px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="panel-title">Cambiar contraseña</div>
+                                </div>                     
+                                <div class="panel-body">
+                                    <form id="frm_change_password" class="form-horizontal" role="form" autocomplete="off">
+                                        <div class="form-group">
+                                            <label for="email" class=" control-label col-sm-4">Contraseña actual</label>
+                                            <div class="col-sm-8">
+                                                <input type="password" class="form-control" name="pass_current" id="pass_current" placeholder="contraseña actual">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class=" control-label col-sm-4">Nueva contraseña</label>
+                                            <div class="col-sm-8">
+                                                <input type="password" class="form-control" name="pass_new" id="pass_new" placeholder="crear nueva contraseña">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class=" control-label col-sm-4">Confirmar nueva contraseña</label>
+                                            <div class="col-sm-8">
+                                                <input type="password" class="form-control" name="pass_confirmation" id="pass_confirmation" placeholder="confirmar nueva contraseña">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- Button -->                                 
+                                            <div class="  col-sm-offset-3 col-sm-9">
+                                                <button id="btn_change_password_save" type="button" class="btn btn-default">Aceptar</button>
+                                                <button type="button" data-dismiss="modal" aria-label="Close" class="btn">Cancelar</button>
+                                            </div>
+                                        </div>                             
+                                    </form>
+                                </div>
+                            </div>
+                        </div>   
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <br>
+                    <p class="text-muted footer_color">
+                        <?php echo date('Y'); ?> &copy; Todos los derechos reservados
                     </p>
                 </div>
             </div>
-        </div>
-
-    </div>
-    <!-- CUERPO -->
-
+        </footer>
+        <?php echo $this->inlineScript() ?>
+    </body>
 </html>

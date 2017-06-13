@@ -463,11 +463,38 @@ class BaseController extends AbstractActionController {
         return $detalle_lista_tmp;
     }
 
-    function curl_($method, $params, $post) {
+    function curl_2($method, $data_string,$auth) {
         $config = $this->getConfig();
         $rest_con = $config['apigility']['config'];
-        $login = $rest_con['user'];
-        $password = $rest_con['pass'];
+        $login = $auth['user'];
+        $password = $auth['pass'];
+        $url = $rest_con['url'] . $method;
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($data_string))
+        );
+        $result = curl_exec($ch);
+        $statusCode = curl_getInfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        $response = [
+            'code' => $statusCode,
+            'data' => $result
+        ];
+        return $response;
+    }
+
+    function curl_($method, $params, $post,$auth) {
+        $config = $this->getConfig();
+        $rest_con = $config['apigility']['config'];
+        $login = $auth['user'];
+        $password = $auth['pass'];
         $url = $rest_con['url'] . $method;
 
         $ch = curl_init();
@@ -492,6 +519,7 @@ class BaseController extends AbstractActionController {
 
         return $response;
     }
+
     function curl_login($method, $params) {
         $config = $this->getConfig();
         $rest_con = $config['apigility']['config'];
@@ -499,14 +527,15 @@ class BaseController extends AbstractActionController {
         $password = $params['pass'];
         $url = $rest_con['url'] . $method;
 
-        $ch = curl_init();     
+        $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($ch);
         $statusCode = curl_getInfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
+        
         $response = [
             'code' => $statusCode,
             'data' => $result
@@ -514,4 +543,5 @@ class BaseController extends AbstractActionController {
 
         return $response;
     }
+
 }

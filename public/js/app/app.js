@@ -4,7 +4,53 @@ var _config = {
 };
 
 jQuery(document).on('ready', function () {
-    menu();    
+    menu();
+    jQuery("#btn_change_password").click(function () {
+        modal_change_password();
+    });
+    function modal_change_password() {
+        jQuery('#modal_chg_password').modal({
+            keyboard: false,
+            backdrop: 'static'
+        });
+
+        var modal_preguntas = jQuery('#modal_chg_password');
+        modal_preguntas.on('shown.bs.modal', function (e) {
+            jQuery(this).off('shown.bs.modal');
+            document.getElementById("frm_change_password").reset();
+            jQuery("#btn_change_password_save").off('click');
+            jQuery("#btn_change_password_save").click(function (e) {
+                
+                BaseX.post({
+                    url: root + '/usuario/sec/change_password',
+                    data: {
+                        'pass_current': jQuery('#pass_current').val(),
+                        'pass_new': jQuery('#pass_new').val(),
+                        'pass_confirmation': jQuery('#pass_confirmation').val(),
+                    },
+                    success: function (xhr, txt) {
+                        bootbox.dialog({
+                            message: xhr.msg,
+                            title: "Mensaje del sistema",
+                            closeButton: false,
+                            buttons: {
+                                success: {
+                                    label: "Aceptar",
+                                    className: "btn-default",
+                                    callback: function () {
+                                        
+                                    }
+                                }
+                            }
+                        });
+                        
+                        jQuery('#modal_chg_password').modal('hide');
+                    }
+                });
+            });
+        });
+
+    }
 });
 
 function valida_sesion(vfs) {
@@ -38,8 +84,8 @@ function valida_sesion(vfs) {
                     }
                 });
             }
-            
-            if (vfs === 1){
+
+            if (vfs === 1) {
                 if (rp === true) {
                     if (xhr.ini === true) {
                         if (xhr.fin === true) {
@@ -52,7 +98,7 @@ function valida_sesion(vfs) {
                         rp = false;
                         return rp;
                     }
-                }                
+                }
             }
 
         }

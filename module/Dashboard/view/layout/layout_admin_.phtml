@@ -1,0 +1,140 @@
+<?php
+echo $this->doctype();
+$base_url = $this->basePath();
+$apps_var = $this->apps_var;
+$usuario = $this->users_acl->rows;
+$apps_var_usuario = $this->apps_config_caracteres;
+$cambio_config = $this->cambio_config;
+?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <?php echo $this->headTitle($apps_var['app_title'])->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>  
+
+        <?php
+        echo $this->headLink()
+                ->prependStylesheet($this->basePath('js/lib/jqgrid/css/ui.jqgrid-bootstrap.css'))
+                ->prependStylesheet($this->basePath('css_rd/bootstrap/320/bootstrap.min.css'))
+                ->prependStylesheet($this->basePath('css_rd/font-awesome/css/font-awesome.css'))
+                ->prependStylesheet($this->basePath('css_rd/app/header.css'))
+                ->prependStylesheet($this->basePath('css_rd/app/body.css'))
+                ->prependStylesheet($this->basePath('css_rd/app/footer.css'))
+                ->prependStylesheet($this->basePath('css_rd/navbar.css'))
+                ->prependStylesheet($this->basePath('css_rd/mix.css'));
+                
+        ?>
+        <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
+        <script type="text/javascript">
+            var root = '<?php echo $base_url; ?>';
+        </script>
+
+        <?php
+        echo $this->headScript()
+//                ->prependFile($this->basePath('js_rd/jquery/183/jquery.min.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js_rd/bootstrap/320/bootstrap.min.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js/app/menu.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js/app/app.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js_rd/ui/1112/jquery-ui.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('js_rd/bootstrap/bootbox/440/bootbox.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('js_rd/app/jsforallpages.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('js/lib/jqgrid/i18n/grid.locale-es.js'))
+//                ->prependFile($this->basePath('js/app/jquery.bootstrap.wizard.js'))
+                ->prependFile($this->basePath('js/app/jquery.steps.min.js'))
+                ->prependFile($this->basePath('js/lib/jqgrid/jquery.jqGrid.min.js'))
+                ->prependFile($this->basePath('js/lib/BaseXJS/jquery.filter_input.js'))
+                ->prependFile($this->basePath('js/lib/BaseXJS/jquery.commons.js'))
+                ->prependFile($this->basePath('js/app/_strings.js'))
+                ->prependFile($this->basePath('js/lib/handlebars-v4.0.5.js'))
+                ->prependFile($this->basePath('js/lib/BaseXJS/BaseX.js')) 
+                ->prependFile($this->basePath('js/jquery.min.js'))
+                ->prependFile($this->basePath('js_rd/app/jsforinst.js'), 'text/javascript', array('conditional' => 'lt IE 9',));
+        ?>
+        <!--[if lte IE 9]>
+            <script src="js_rd/fix/html5shiv/html5shiv.js"></script>
+            <script src="js_rd/fix/respond/respond.js"></script>
+            <link href="css_rd/app/fix/css-fix.css" rel="stylesheet">
+        <![endif]-->
+
+    </head>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="container">
+            <div class="col-md-12 col-md-offset-0">
+                <div class="col-xs-2 col-sm-2 col-md-1">
+                    <img src="<?php echo $base_url; ?>/img/indago.png" class="sri" width="260px">
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-8">
+                    <span class="h4"></span>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2">
+                    <img src="<?php echo $base_url; ?>/img/logo.png" class="logo">
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>    
+    </div>
+    <!-- HEADER -->
+
+    <!-- CUERPO -->
+    <div class="container">
+        <div class="row">
+            <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
+            <div class="col-md-12 col-md-offset-0">
+                <!-- LINKS -->
+                <div style="text-align: right; padding: 15px;">
+                            <div class="link-boton2">
+                                <a href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">
+                                    <img src="<?php echo $base_url; ?>/img/logout.png" alt="" width="140" height="36" class="logout">
+                                </a>
+                            </div>
+                </div>
+                <!-- LINKS -->
+
+                <!-- CAJA CELESTE -->
+                <div class="caja1">
+                    <div class="row">
+                        <div class="first-line col-md-12">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <p class="centrado"><b>Bienvenido: <?php echo $usuario->display_name; ?></b></p>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <p class="centrado"><b>Rol: Analista</b></p>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 pull-right">
+                                <p class="centrado"><b>Última Sesión:</b> 12/07/2016 15:26:22</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!-- CAJA CELESTE -->
+
+                <div class="formu">
+                    <?php echo $this->content; ?>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="footer-bottom">
+                <div class="container">
+                    <!--<p class="pull-left"> Copyright © Bloom. All right reserved. </p>-->
+                    <p class="text-center">
+                        <span>© Derechos Reservados <?php echo date('Y'); ?> - MINEDU</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- CUERPO -->
+
+</html>

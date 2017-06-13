@@ -10,6 +10,7 @@ namespace BaseX\Apigility;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\SessionCookieJar;
 
 class AgClient {
 
@@ -28,7 +29,7 @@ class AgClient {
     protected $_headers = true;
 
     public function __construct($options) {
-
+        
         $this->_url_ag = isset($options['url']) === true ? $options['url'] : '';
         $this->_username = isset($options['username']) === true ? $options['username'] : '';
         $this->_password = isset($options['password']) === true ? $options['password'] : '';
@@ -144,11 +145,11 @@ class AgClient {
     public function get_curl($resource, $params = []) {
 
         if (count($params) === 0) {
-            $params_q = $this->_url_ag .  $resource;
+            $params_q = $this->_url_ag . $resource;
         } else {
             $params_q = $this->_url_ag . $resource . '/' . http_build_query($params);
         }
-        
+
         $curl = curl_init();
 // Set some options - we are passing in a useragent too here
         curl_setopt_array($curl, array(

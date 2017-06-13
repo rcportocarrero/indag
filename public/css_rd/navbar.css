@@ -1,6 +1,6 @@
 /* ---------- BARRA DE NAVEGACION ---------- */
 .navbar-default { background-color: red; }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {background-color: rgba(255, 255, 255, 1); border-radius: 3px; color: #2C93FF; opacity: 1; }
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {background-color: rgba(255, 255, 255, 1);  color: #2C93FF; opacity: 1; }
 
 /* ----------- FORMULARIO ---------- */
 
@@ -11,3 +11,66 @@
 .formu .nav-tabs > li > a { color: #4DC1E0; background-color: #FFF; border: 2px solid; border-radius: 0px; margin: 0; font-size: 16px; }
 .formu .nav-tabs > li > a:hover, .formu .nav-tabs > li > a:active, .formu .nav-tabs > li > a:focus { color: #F0F0F0; background-color: #14A3BD; }
 .formu .nav-tabs > li.active > a { color: #00A7D3; background-color: #CDEDF6;     border: 2px solid #4DC1E0; }
+
+/* -> Menu */
+.nav-tabs2 > li.active > a, .nav-tabs2 > li.active > a:focus, .nav-tabs2 > li.active > a:hover { border-width: 0; }
+.nav-stacked > li + li {
+    margin-top: 0px;
+}
+.nav-tabs2 > li > a {
+    padding: 10px !important;
+    color: #4DC1E0;
+    background-color: #FFF;
+    border: 2px solid;
+    border-radius: 0px;
+    margin: 10px;
+    font-size: 16px;
+}
+.nav-tabs2 > li > a:hover, .nav-tabs2 > li > a:focus {
+    background-color: #CDEDF6; 
+    color: #00A7D3;
+    z-index: 99;
+}
+.nav-tabs2 > li.active > a {
+    color: #00A7D3;
+    background-color: #CDEDF6;
+    border: 2px solid #4DC1E0;
+    z-index: 100;
+    font-weight: bold;
+}
+.nav-tabs2 > li.active > a:hover, .nav-tabs2 > li.active > a:focus {
+    color: #00A7D3;
+    background-color: #CDEDF6; 
+    border: 2px solid #4DC1E0;
+}
+/* -> Menu principal */
+.nav-tabs3 > li.active > a, .nav-tabs3 > li.active > a:focus, .nav-tabs3 > li.active > a:hover { border-width: 0; }
+.nav-stacked > li + li {
+    margin-top: 0px;
+}
+.nav-tabs3 > li > a {
+    padding: 10px !important;
+    color: #4DC1E0;
+    background-color: #FFF;
+    border: 2px solid;
+    border-radius: 0px;
+    margin: 10px;
+    font-size: 16px;
+}
+.nav-tabs3 > li > a:hover, .nav-tabs3 > li > a:focus {
+    background-color: #CDEDF6; 
+    color: #00A7D3;
+    z-index: 99;
+}
+.nav-tabs3 > li.active > a {
+    color: #00A7D3;
+    background-color: #CDEDF6;
+    border: 2px solid #4DC1E0;
+    z-index: 100;
+    font-weight: bold;
+}
+.nav-tabs3 > li.active > a:hover, .nav-tabs3 > li.active > a:focus {
+    color: #00A7D3;
+    background-color: #CDEDF6; 
+    border: 2px solid #4DC1E0;
+}

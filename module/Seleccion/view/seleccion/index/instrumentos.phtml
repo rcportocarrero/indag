@@ -1,39 +1,3 @@
-<style>
-
-   .ui-jqgrid .ui-jqgrid-btable tbody tr.jqgrow td {
-        white-space: normal !important;
-        padding: 10px;
-    }
-
-    .ui-jqgrid .ui-jqgrid-htable .ui-th-div {
-        height: 40px;
-        margin-top: 5px;
-        padding: 10px;
-        display: list-item;
-        background-color: #CAE7EA;
-    }
-    .ui-state-hover {
-        border : 1px solid #CAE7EA;
-        background: #CAE7EA;
-    }
-
-    .ui-th-ltr, .ui-jqgrid .ui-jqgrid-htable th.ui-th-ltr {
-        background-color: #CAE7EA;
-    }
-    .ui-state-highlight {
-        background: #CAE7EA;
-    }
-    .padd_input{
-        padding-top:10px; padding-bottom: 30px;
-    }
-
-    .btn-primary{
-        color: #00A7D3;
-        background-color: #e5e5e5;
-        border-color: #e5e5e5;
-    }
-
-</style>
 <div class="row">
     <div>
         <ol class="breadcrumb">
@@ -45,49 +9,13 @@
 <div class="row">
     <div class="tab-pane fade active in" id="responsable">
         <div class="tab-titulo">Consulta de instrumentos</div>
-
-        <fieldset class="campo">
-            <div class="form-group">
-                <div class="col-md-6">
-                    <label for="txtnombre" class="col-xs-3 col-sm-3 col-md-4 control-label">Estrategia</label>
-                    <div class="col-xs-6 col-sm-7 col-md-7 colxs2">
-                        <select name="txtfono" id="" class="form-control" style="margin-left: 15px;">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">01 - Estrategia</option>
-                            <option value="2">02 - Estrategia</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="txtnombre" class="col-xs-3 col-sm-3 col-md-4 control-label">Intervención</label>
-                    <div class="col-xs-6 col-sm-7 col-md-7 colxs2">
-                        <select name="txtfono" id="" class="form-control" style="margin-left: 15px;">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">01 - Intervención</option>
-                            <option value="2">02 - Intervención</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="form-group pull-right botones group-one-resp">
-                <button type="button" class="btn btn-ttc btn-editarinfo"> Buscar&nbsp;&nbsp;<i class="glyphicon glyphicon-search"></i></button>
-                <button type="button" class="btn btn-tts btn-editarinfo"> Limpiar&nbsp;&nbsp;<i class="glyphicon glyphicon-erase"></i></button>
-            </div>        
-
-        </fieldset>    
     </div>
 </div>
-<div  class="row">
-    <div class="col-md-6">
-        <label>Resultados de búsqueda</label>
-
-    </div>
-</div>
-<div  class="row">
-    <div class="col-md-6">
-        <table id="grid_instrumentos"></table>
+<br>
+<br>
+<div class="row">
+    <div style="width: 800px !important;">
+        <table id="grid_instrumentos" ></table>
         <div id="pager_grid_instrumentos"></div>
     </div>
 </div>

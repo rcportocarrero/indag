@@ -1,4 +1,4 @@
-jQuery(document).on('ready', function () {    
+jQuery(document).on('ready', function () {
 //    jQuery('#usuario_sec_captcha_login').filter_input({regex: '[a-zA-Z]'});
 //    jQuery('#usuario_sec_documento').filter_input({regex: '[0-9]'});
 //    jQuery('#usuario_sec_documento').filter_input({regex: '[a-zA-Z]'});
@@ -42,11 +42,13 @@ jQuery(document).on('ready', function () {
 //        }
 //    });
 
-  /*Evento onclick button login*/
+    /*Evento onclick button login*/
     jQuery("#usuario_sec_login").click(function () {
         var form = jQuery("#usuario_sec_frm_login");
         if (form.valid()) {
             document.getElementById("usuario_sec_frm_login").submit();
         }
     });
+
+    
 });

@@ -1,7 +1,8 @@
 <?php
 $base_url = $this->basePath();
 
-function detect() {
+function detect()
+{
     $browser = array("IE", "OPERA", "MOZILLA", "NETSCAPE", "FIREFOX", "SAFARI", "CHROME");
     $os = array("WIN", "MAC", "LINUX");
 
@@ -10,19 +11,22 @@ function detect() {
     $info['os'] = "OTHER";
 
     # buscamos el navegador con su sistema operativo
-    foreach ($browser as $parent) {
+    foreach ($browser as $parent)
+    {
         $s = strpos(strtoupper($_SERVER['HTTP_USER_AGENT']), $parent);
         $f = $s + strlen($parent);
         $version = substr($_SERVER['HTTP_USER_AGENT'], $f, 15);
         $version = preg_replace('/[^0-9,.]/', '', $version);
-        if ($s) {
+        if ($s)
+        {
             $info['browser'] = $parent;
             $info['version'] = $version;
         }
     }
 
     # obtenemos el sistema operativo
-    foreach ($os as $val) {
+    foreach ($os as $val)
+    {
         if (strpos(strtoupper($_SERVER['HTTP_USER_AGENT']), $val) !== false)
             $info['os'] = $val;
     }
@@ -43,19 +47,20 @@ $info = detect();
         <meta name="description" content="Login, registration forms">
         <meta name="author" content="">
 
-<?php
-echo $this->headMeta()
-        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
 
-echo $this->headLink()
-        ->prependStylesheet($this->basePath('css_rd/bootstrap/320/bootstrap.min.css'))
-        ->prependStylesheet($this->basePath('css_rd/font-awesome/css/font-awesome.css'))
-        ->prependStylesheet($this->basePath('css_rd/app/header.css'))
-        ->prependStylesheet($this->basePath('css_rd/app/footer_ini.css'))
-        ->prependStylesheet($this->basePath('css_rd/app/body_ini.css'))
-        ->prependStylesheet($this->basePath('css_rd/navbar.css'));
-?>
+        echo $this->headLink()
+                ->prependStylesheet($this->basePath('css_rd/bootstrap/320/bootstrap.min.css'))
+                ->prependStylesheet($this->basePath('css_rd/font-awesome/css/font-awesome.css'))
+                ->prependStylesheet($this->basePath('css_rd/app/header.css'))
+                ->prependStylesheet($this->basePath('css_rd/app/footer_ini.css'))
+                ->prependStylesheet($this->basePath('css_rd/app/body_ini.css'))
+                ->prependStylesheet($this->basePath('css_rd/navbar.css'))
+                ->prependStylesheet($this->basePath('css_rd/mix.css'));
+        ?>
 
 
         <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
@@ -64,18 +69,21 @@ echo $this->headLink()
         </style>
 
 
-
+        <script>
+            var root = '<?php echo $base_url; ?>';
+        </script>
     </head>
     <body>
         <div id="wrapper">
-<?php
-if ($info["browser"] === "IE") {
-    ?>
+            <?php
+            if ($info["browser"] === "IE")
+            {
+                ?>
                 <div class="row" style="background-color: #EDD0D0; border-color: #EDD0D0;height: 50px;text-align:center;"><h3 style="color:#CE141F !important;">Advertencia:  Este sitio web funciona mejor con Mozilla Firefox  y Chrome.</h3></div>
-                <?php
-            }
-            ?>
-            <?php ?>
+    <?php
+}
+?>
+<?php ?>
             <div class="header">
                 <div class="container">
                     <div class="col-md-12 col-md-offset-0">
@@ -93,26 +101,26 @@ if ($info["browser"] === "IE") {
 
             <div class="container section">
                 <div class="row">
-                    <?php echo $this->content; ?>
+            <?php echo $this->content; ?>
                 </div>  
             </div>  
 
 
-                    <?php echo $this->inlineScript() ?>
+<?php echo $this->inlineScript() ?>
         </div>
         <div class="footer">
             <div class="container">
                 <div class="col-xs-3 col-sm-3 col-md-3 canales">
-<!--                    <h3>© Derechos Reservados 2017 - MINEDU
-                    </h3>-->
+                    <!--                    <h3>© Derechos Reservados 2017 - MINEDU
+                                        </h3>-->
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-2 telefono text-left">
                     <!--<h3><i class="fa fa-phone-square"></i> <span class="num-fono">615-5855</span> </h3>-->
                 </div>
                 <div class="col-xs-3 col-sm-4 col-md-5 correobox">
-<!--                    <a href="mailto:demo@minedu.gob.pe" title="ofertaeducativa@minedu.gob.pe">
-                        <i class="fa fa-envelope"></i> <span class="correo">&nbsp;demo@minedu.gob.pe</span></a>-->
-<h3>© Derechos Reservados 2017 - MINEDU
+                    <!--                    <a href="mailto:demo@minedu.gob.pe" title="ofertaeducativa@minedu.gob.pe">
+                                            <i class="fa fa-envelope"></i> <span class="correo">&nbsp;demo@minedu.gob.pe</span></a>-->
+                    <h3>© Derechos Reservados 2017 - MINEDU
                     </h3>
                 </div>
                 <div class="col-xs-3 col-sm-2 col-md-2 redes">
@@ -125,25 +133,25 @@ if ($info["browser"] === "IE") {
             </div>
         </div>
     </body>
-<?php
-echo $this->headScript()
-        ->prependFile($this->basePath('js/lib/UsuarioJS/naruto.js'))
-        ->prependFile($this->basePath('js/lib/UsuarioJS/kakashi.min.js'))
-        ->prependFile($this->basePath('js/lib/UsuarioJS/bootbox.min.js'))
-        ->prependFile($this->basePath('js_rd/jquery/203/jquery.min.js'))
-        ->prependFile($this->basePath('js_rd/bootstrap/320/bootstrap.min.js'))
-        ->prependFile($this->basePath('js/lib/UsuarioJS/login.js?v=' . md5(time())))
-        ->prependFile($this->basePath('js/lib/porigon.js'))
-        ->prependFile($this->basePath('js/lib/safify.js'))
-        ->prependFile($this->basePath('js/bootstrap.min.js'))
-        ->prependFile($this->basePath('js/lib/UsuarioJS/captcha.js'))
-        ->prependFile($this->basePath('js/lib/BaseXJS/jquery.filter_input.js'))
-        ->prependFile($this->basePath('js/lib/BaseXJS/jquery.validate.js'))
-        ->prependFile($this->basePath('js/lib/BaseXJS/BaseX.js?v=' . md5(time())))
-        ->prependFile($this->basePath('js/jquery.min.js'))
-        ->prependFile($this->basePath('js/app/_strings.js'))
-        ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-        ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-;
-?>
+    <?php
+    echo $this->headScript()
+            ->prependFile($this->basePath('js/lib/UsuarioJS/naruto.js'))
+            ->prependFile($this->basePath('js/lib/UsuarioJS/kakashi.min.js'))
+            ->prependFile($this->basePath('js/lib/UsuarioJS/bootbox.min.js'))
+            ->prependFile($this->basePath('js_rd/jquery/203/jquery.min.js'))
+            ->prependFile($this->basePath('js_rd/bootstrap/320/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/lib/UsuarioJS/login.js?v=' . md5(time())))
+            ->prependFile($this->basePath('js/lib/porigon.js'))
+            ->prependFile($this->basePath('js/lib/safify.js'))
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/lib/UsuarioJS/captcha.js'))
+            ->prependFile($this->basePath('js/lib/BaseXJS/jquery.filter_input.js'))
+            ->prependFile($this->basePath('js/lib/BaseXJS/jquery.validate.js'))
+            ->prependFile($this->basePath('js/lib/BaseXJS/BaseX.js?v=' . md5(time())))
+            ->prependFile($this->basePath('js/jquery.min.js'))
+            ->prependFile($this->basePath('js/app/_strings.js'))
+            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+    ;
+    ?>
 </html>

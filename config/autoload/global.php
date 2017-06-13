@@ -5,9 +5,9 @@ return [
         'config' => [
 //            'url' => 'http://167.114.170.28:7000/web/',
             'url' => 'http://167.114.170.28:7500/web/',
-            'url_login' => 'http://167.114.170.28:7000/',
+            'url_login' => 'http://167.114.170.28:7500/',
             'user' => 'invitado',
-            'pass' => '123456',
+            'pass' => '12345678',
         ],
     ],
     'module_layouts' => [
